@@ -7,6 +7,7 @@ app.use(express.json()) // Indicamos que usaremos JSON
 const port = 3000
 
 //HTTP METHODS
+//Creando un endpoint que regresa una lista de explorers, a partir del método GET
 app.get('/v1/explorers', (req, res) => {
     console.log(`Api Explorers GET ALL requests ${new Date()}`)
     const explorer1 = {id: 1, name: "Luis"}
@@ -17,7 +18,12 @@ app.get('/v1/explorers', (req, res) => {
     res.status(200).json(explorers)
   })
 
-  
+//Creando un endpoint que regresa un explorer con ID, a partir del método GET
+app.get('/v1/explorers/:id', (req,res) =>{
+    console.log(`Obteniendo explorer con ID: ${req.params.id}`)
+    const explorer = {id: 1, name: "Luis"}
+    res.status(200).json(explorer)
+})
 
 // Con esto inicializamos esta app
 app.listen(port, () => {
